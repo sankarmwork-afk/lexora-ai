@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:17
+    container_name: wiki_db
+    environment:
+      POSTGRES_DB: lexora
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: wiki_backend
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+    env_file:
+      - ./backend/.env
+
+volumes:
+  postgres_data:
