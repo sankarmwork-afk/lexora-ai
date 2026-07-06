@@ -131,5 +131,6 @@ watchfiles==1.2.0
 websocket-client==1.9.0
 websockets==16.0
 yarl==1.24.2
+whitenoise==6.9.0
 
 gunicorn
