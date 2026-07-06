@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import api from "../services/api";
 import CommentSection from "../components/CommentSection";
 import LikeButton from "../components/LikeButton";
-import BookMarkButton from "../components/BookMarkButton";
+import BookmarkButton from "../components/BookmarkButton";
 import ShareModal from "../components/ShareModel";
 
 function ArticleDetail() {
@@ -470,12 +470,13 @@ const sections = [
           >
             🔗 Share
           </button>
-          <BookMarkButton
-            articleId={article.id}
-            onUpdated={(bookmarksCount) =>
-              updateArticleStats({ bookmarks_count: bookmarksCount })
-            }
-          />
+          <BookmarkButton
+  articleId={article.id}
+  onUpdated={(bookmarksCount) =>
+    updateArticleStats({ bookmarks_count: bookmarksCount })
+  }
+/>
+          
           <LikeButton
             articleId={article.id}
             onUpdated={(likesCount) =>
